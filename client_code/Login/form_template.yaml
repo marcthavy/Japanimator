@@ -1,0 +1,49 @@
+container: {type: ColumnPanel}
+components:
+- type: Spacer
+  properties: {visible: true, spacing_above: small, spacing_below: small, height: '400',
+    tooltip: ''}
+  name: header
+  layout_properties:
+    col_widths: {}
+    grid_position: KDJTDP,VGTZOI
+    full_width_row: true
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: 'theme:Background'}
+  name: body
+  layout_properties:
+    col_widths: {}
+    grid_position: DRECHY,IGSSYO
+    full_width_row: true
+  components:
+  - type: Label
+    properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: Bienvenue sur Japanimator, font_size: 25, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: welcome
+    layout_properties:
+      col_widths: {}
+      grid_position: XTECGO,JHAEKI
+      full_width_row: false
+  - type: Button
+    properties: {role: large-primary-button, align: center, tooltip: '', border: '',
+      enabled: true, foreground: '', visible: true, text: Connexion, font_size: null,
+      font: '', spacing_above: large, icon_align: left, spacing_below: large, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:check-circle-o'}
+    name: login_button
+    layout_properties:
+      col_widths: {}
+      grid_position: UDGYDN,FPOBDZ
+    event_bindings: {click: login_button_click}
+- type: Spacer
+  properties: {visible: true, spacing_above: small, spacing_below: small, height: '400',
+    tooltip: ''}
+  name: footer
+  layout_properties:
+    col_widths: {}
+    grid_position: RJTXHC,MCRGSR
+    full_width_row: true
+is_package: true

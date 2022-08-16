@@ -1,0 +1,71 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: Image
+  properties: {role: null, vertical_align: center, height: '600', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: zoom_to_fill, spacing_above: small,
+    source: 'https://www.saar-hunsrueck-steig.de/cams/clients/shsteig/media/images_backgrounds_Bild_6.jpg',
+    spacing_below: small, background: '', horizontal_align: center}
+  name: side
+  layout_properties:
+    col_widths: {}
+    grid_position: CZPJLG,AFMJYF
+    full_width_row: false
+- type: DropDown
+  properties:
+    role: form
+    align: full
+    tooltip: ''
+    placeholder: Category
+    border: ''
+    enabled: true
+    foreground: ''
+    items: ['']
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: true
+  name: category_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: CZPJLG,YAOKFJ ECFLJP,MFUMBX
+    full_width_row: false
+- type: TextBox
+  properties: {role: form, align: left, hide_text: false, tooltip: '', placeholder: Objet,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: subject_textbox
+  layout_properties:
+    col_widths: {}
+    grid_position: CZPJLG,YAOKFJ GVGRZY,YEVMKC
+    full_width_row: false
+- type: TextArea
+  properties: {role: form, align: left, height: '500', tooltip: '', placeholder: Message,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: message_textarea
+  layout_properties:
+    col_widths: {}
+    grid_position: CZPJLG,YAOKFJ LCPIPK,DDCOXT
+    full_width_row: false
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Envoyer le formulaire, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: medium, italic: false,
+    background: '', bold: false, underline: false, icon: ''}
+  name: send_button
+  layout_properties:
+    col_widths: {}
+    grid_position: FWRLPA,JASSCD
+    full_width_row: false
+  event_bindings: {click: send_button_click}
+is_package: true

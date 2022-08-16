@@ -1,0 +1,31 @@
+components:
+- type: Label
+  properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: title_label
+  layout_properties: {grid_position: 'GFCNYY,AODBGA'}
+  data_bindings:
+  - {property: text, code: 'self.item[''title'']'}
+- type: Label
+  properties: {}
+  name: date_label
+  layout_properties: {grid_position: 'BOTRGL,EODCDI'}
+  data_bindings:
+  - {property: text, code: 'self.item[''created'']'}
+- type: Label
+  properties: {}
+  name: category_label
+  layout_properties: {grid_position: 'BOTRGL,LSYKBJ'}
+  data_bindings:
+  - {property: text, code: 'self.item[''category'']'}
+- type: Label
+  properties: {}
+  name: body_label
+  layout_properties: {grid_position: 'URQMRE,GINCMX'}
+  data_bindings:
+  - {property: text, code: 'self.item[''body'']'}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}

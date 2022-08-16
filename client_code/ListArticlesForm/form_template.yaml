@@ -1,0 +1,21 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {show: form_show}
+components:
+- type: Button
+  properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Add Article, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:plus'}
+  name: new_article_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DYWGOP,MLYEBL
+- type: RepeatingPanel
+  properties: {item_template: ListArticlesForm.ItemTemplate1}
+  name: repeating_panel_1
+  layout_properties:
+    col_widths: {}
+    grid_position: MTBJCM,KNLBKE
+is_package: true
