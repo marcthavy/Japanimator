@@ -85,6 +85,7 @@ body {
   font-size: 14px;
   line-height: 1.4286;
   background-color: #fafafa;
+  overflow: hidden;
 }
 
 a, a:focus {
@@ -102,7 +103,7 @@ a:hover, a:active {
 
 .anvil-role-subheading {
   font-size: 16px;
-  line-height: 24dp;
+  line-height: 32px #24dp;
 }
 
 .anvil-role-headline {
@@ -572,27 +573,27 @@ body>div[data-notify="container"].alert-warning>span[data-notify="title"]{
 }
 
 .anvil-role-primary-color > .btn, .btn-primary, .anvil-role-primary-color.file-loader>label {
-  color: white;
+  color: %color:Gray 50%;
   background-color: %color:Primary 500%;
 }
 
 .anvil-role-secondary-color > .btn, .anvil-role-secondary-color.file-loader>label {
-  color: white;
+  color: %color:Gray 50%;
   background-color: %color:Secondary 500%;
 }
 
 .btn-success, .btn-info, .btn-warning, .btn-danger {
-  color: white;
+  color: %color:Gray 50%;
 }
 
 .anvil-role-primary-color > .btn:hover, .anvil-role-primary-color > .btn:active, .anvil-role-primary-color > .btn:focus,
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
-  color: white;
+  color: %color:Gray 50%;
   background-color: %color:Primary 700%;
 }
 
 .anvil-role-secondary-color > .btn:hover, .anvil-role-secondary-color > .btn:active, .anvil-role-secondary-color > .btn:focus {
-  color: white;
+  color: %color:Gray 50%;
   background-color: %color:Secondary 700%;
 }
 
@@ -769,3 +770,45 @@ textarea.anvil-component[disabled] {
 https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-material-design-elevations
 */
 
+.anvil-role-horizontal-repeater {
+    display: flex;
+}
+
+@media (min-width: 992px) {
+.anvil-role-horizontal-repeater>div {
+    min-width: 250px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.anvil-role-horizontal-repeater .anvil-panel-col {
+    width: 250px;
+  	margin: auto .5%;
+}  
+.anvil-role-twod-repeater .anvil-role-horizontal-repeater>div {
+    overflow: hidden;
+}
+.anvil-role-twod-repeater>div {
+    overflow-x: auto;
+}
+
+.anvil-role-separator {
+  border-bottom: 1px solid %color:Primary 700%;
+}
+.anvil-role-overflow-hidden {
+    overflow: hidden;
+}
+.anvil-role-dense {
+    color: White;
+  	background-color: White;
+}
+
+@media (min-width: 992px) {
+    .anvil-panel-section-container:not(.full-width-row) { max-width: 100%; }
+}
+
+@media (min-width: 992px) {
+.anvil-role-horizontal-repeater {
+    display: flex;
+}

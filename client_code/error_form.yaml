@@ -8,4 +8,4 @@ components:
     icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
     underline: false, icon: ''}
   name: label_1
-  layout_properties: {grid_position: 'OATFQS,DGFKUR'}
+  layout_properties: {grid_position: 'OATFQS,DGFKUR', full_width_row: false}

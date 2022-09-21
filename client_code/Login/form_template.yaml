@@ -1,49 +1,73 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {}
 components:
 - type: Spacer
-  properties: {visible: true, spacing_above: small, spacing_below: small, height: '400',
+  properties: {visible: true, spacing_above: none, spacing_below: none, height: '250',
     tooltip: ''}
-  name: header
+  name: header_panel
   layout_properties:
     col_widths: {}
-    grid_position: KDJTDP,VGTZOI
+    grid_position: KDJTDP,HAYKRM
     full_width_row: true
+    row_background: theme:Primary 500
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-    spacing_below: small, background: 'theme:Background'}
-  name: body
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: 'theme:Background'}
+  name: sub_header_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: YRZOQD,OCNWRX
+    full_width_row: true
+    row_background: theme:Primary 700
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Bienvenue sur Japanimator, font_size: null, font: '',
+      spacing_above: large, icon_align: left, spacing_below: large, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: welcome_label
+    layout_properties:
+      col_widths: {}
+      grid_position: XVOBJA,QMPYLH
+      full_width_row: false
+- type: Image
+  properties: {role: null, vertical_align: center, height: '500', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: zoom_to_fill, spacing_above: none,
+    source: 'https://wallpaperaccess.com/full/2742177.jpg', spacing_below: none, background: '',
+    horizontal_align: center}
+  name: banner_image
+  layout_properties: {grid_position: 'LTYVBP,BUJRIQ', full_width_row: true}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: 'theme:Background'}
+  name: sub_footer_panel
   layout_properties:
     col_widths: {}
     grid_position: DRECHY,IGSSYO
     full_width_row: true
+    row_background: theme:Primary 700
   components:
-  - type: Label
-    properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: Bienvenue sur Japanimator, font_size: 25, font: '', spacing_above: large,
-      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: welcome
-    layout_properties:
-      col_widths: {}
-      grid_position: XTECGO,JHAEKI
-      full_width_row: false
   - type: Button
-    properties: {role: large-primary-button, align: center, tooltip: '', border: '',
-      enabled: true, foreground: '', visible: true, text: Connexion, font_size: null,
-      font: '', spacing_above: large, icon_align: left, spacing_below: large, italic: false,
-      background: '', bold: false, underline: false, icon: 'fa:check-circle-o'}
+    properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Connexion, font_size: null, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:sign-in'}
     name: login_button
     layout_properties:
       col_widths: {}
       grid_position: UDGYDN,FPOBDZ
     event_bindings: {click: login_button_click}
 - type: Spacer
-  properties: {visible: true, spacing_above: small, spacing_below: small, height: '400',
+  properties: {visible: true, spacing_above: none, spacing_below: none, height: '250',
     tooltip: ''}
-  name: footer
+  name: footer_panel
   layout_properties:
     col_widths: {}
     grid_position: RJTXHC,MCRGSR
     full_width_row: true
+    row_background: theme:Primary 500
 is_package: true

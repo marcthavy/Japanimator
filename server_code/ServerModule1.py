@@ -1,3 +1,4 @@
+import anvil.email
 import anvil.google.auth, anvil.google.drive, anvil.google.mail
 from anvil.google.drive import app_files
 import anvil.users
@@ -6,102 +7,215 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime
+import bcrypt
 
-app_tables.cache[''] = app_tables.articles
+##############################
+############ Main ############
+##############################
+
+# Get current user row from users data table.
+@anvil.server.callable
+def get_user():
+  return anvil.users.get_user()
+
+# Check current user access (administrator or not)
+#@anvil.server.callable
+def check_admin(user):
+  if user is None or not user['admin']:
+    raise Exception("Accès non autorisé") 
+
+######################################
+############ User Profile ############
+######################################
+
+# Set avatar on current user row into users data table.
+@anvil.server.callable
+def set_avatar(user, img):
+  if app_tables.users.has_row(user):
+    user['avatar'] = img
+  else:
+    raise Exception("Compte inexistant")
+
+# Set new password on current user row into users data table.
+@anvil.server.callable
+def set_password(user, new_password):
+  if app_tables.users.has_row(user):
+    user['password_hash'] = bcrypt.hashpw(
+      new_password.encode(),
+      bcrypt.gensalt()
+    ).decode()
+    user['confirmed_email'] = True
+  else:
+    raise Exception("Compte inexistant")  
+
+# Delete row of current user from users data table.
+@anvil.server.callable
+def delete_account(user):
+  table = app_tables.contacts.search(email = user['email'])
+  if table != None:
+    for row in table:
+      row['email'] = 'utilisateur supprimé'
+  if app_tables.users.has_row(user):
+    user.delete()
+  else:
+    raise Exception("Compte inexistant")
+    
+#################################
+############ Contact ############
+#################################
+
+# Get the last id.
+#@anvil.server.callable
+def get_last_row_id(rows):
+  if len(rows):
+    last_id = rows[0]['id'] + 1
+  else:
+    last_id = 1
+  return last_id
+
+# create new email into contacts data table.
+@anvil.server.callable
+def create_email(user, category, topic, message):
+  rows = app_tables.contacts.search(tables.order_by(
+    'id',
+    ascending = False
+  ))
+  app_tables.contacts.add_row(
+    id = get_last_row_id(rows),
+    email = user['email'],
+    created = datetime.now(),
+    year = datetime.now().year,
+    category = category.lower(),
+    topic = topic.strip(),
+    message = message.strip(),
+    status = False
+  )
+
+###############################
+############ Inbox ############
+###############################
+
+# Update row of current email into contacts data table.
+@anvil.server.callable
+def update_email(user, email, category, topic, message, status):
+  check_admin(user = user)
+  if app_tables.contacts.has_row(email):
+    email.update(
+      category = category.lower(),
+      topic = topic.strip(),
+      message = message.strip(),
+      status = status
+    )
+  else:
+    raise Exception("Email inexistant")
+
+# Get row of current email id from contacts data table.
+@anvil.server.callable
+def get_email_by_id(user, i):
+  check_admin(user = user)
+  return app_tables.contacts.get(id = int(i))
+
+# Delete row of current email from contacts data table.
+@anvil.server.callable
+def delete_email(user, email):
+  check_admin(user = user)
+  if app_tables.contacts.has_row(email):
+    email.delete()
+  else:
+    raise Exception("Email inexistant")
+    
+##############################
+############ Tags ############
+##############################
+
+# Create new tag name into tags data table.
+@anvil.server.callable
+def create_tag(user, name):
+  check_admin(user = user)
+  if app_tables.tags.get(name = name) == None:
+    return app_tables.tags.add_row(
+      name = name.strip().lower(),
+      parent = 'sans categorie',
+      description = 'default',
+      color = 'white'
+    )
+  else:
+    raise Exception("Tag existant")
+    
+# Update row of current tag into tags data table.
+@anvil.server.callable
+def update_tag(user, tag, parent, description, color):
+  check_admin(user = user)
+  if app_tables.tags.has_row(tag):
+    tag.update(
+      parent = parent.strip().lower(),
+      description = description.strip(),
+      color = color.strip().lower()
+    )
+  else:
+    raise Exception("Tag inexistant")
+    
+# Delete row of current tag from tags data table.
+@anvil.server.callable
+def delete_tag(user, tag):
+  check_admin(user = user)
+  table = None
+  if tag['parent'] == 'contact':
+    table = app_tables.contacts.search(category = tag['name'])
+    if table != None:
+      for row in table:
+        row['category'] = 'sans categorie'
+  if tag['parent'] == 'tag':
+    table = app_tables.tags.search(parent = tag['name'])
+    if table != None:
+      for row in table:
+        row['parent'] = 'sans categorie'
+  if app_tables.tags.has_row(tag):
+    tag.delete()
+  else:
+    raise Exception("Tag inexistant")
+
+#########################################
+############ User Management ############
+#########################################
+
+# Update row of current user into users data table.
+@anvil.server.callable
+def update_user(user, row, confirmed, enabled, admin):
+  check_admin(user = user)
+  if app_tables.users.has_row(row):
+    row.update(
+      confirmed_email = confirmed,
+      enabled = enabled,
+      admin = admin,
+    )
+  else:
+    raise Exception("Compte inexistant")
 
 @anvil.server.callable
-def get_articles():
-  return app_tables.articles.client_writable().search()
-
-@anvil.server.callable
-def get_blog_posts():
-  return app_tables.blog_posts.search()
-
-@anvil.server.callable
-def get_emails():
-  return app_tables.contacts.search()
+def get_anime_by_id(i):
+  return app_tables.contacts.client_writable().get(id = int(i))
 
 @anvil.server.callable
 def get_article_by_id(i):
-  i = int(i)
-  return app_tables.articles.client_writable().get(id=i)
-
-@anvil.server.callable
-def get_blog_post_by_id(i):
-  return app_tables.blog_posts.client_writable().get(id=i)
-
-@anvil.server.callable
-def get_emails_by_id(i):
-  return app_tables.contacts.client_writable().get(id=i)
-
-@anvil.server.callable
-def create_table():
-  print('resetting all articles in datatable')
-  
-  app_tables.articles.delete_all_rows()
-  for i in range(1,8):
-    app_tables.articles.add_row(id=i, category='Category', title=f'Article {i}', created=datetime.now(),
-                                body="""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate massa vitae diam rhoncus, non dictum ante efficitur. Vivamus varius mattis dignissim. Praesent sed metus dui. Vestibulum et augue varius, efficitur est pulvinar, suscipit quam. Vestibulum id magna enim. Etiam interdum arcu viverra malesuada lobortis. Sed porttitor a enim vel congue. Ut vestibulum id risus ac posuere. Nam in lacinia ligula. Sed commodo justo id elit venenatis pretium. Phasellus dictum nunc vel arcu feugiat pellentesque. Aenean vitae turpis placerat, imperdiet lectus at, efficitur erat."""
-                               )
+  return app_tables.news.client_writable().get(id = int(i))
+    
+#################################
+############ Article ############
+#################################
 
 @anvil.server.callable
 def create_new_article():
-  rows = app_tables.articles.search(tables.order_by('id',ascending=False))
+  rows = app_tables.news.search(tables.order_by('id',ascending=False))
   
   if len(rows):
     last_id = rows[0]['id']  + 1
   else:
     last_id = 1
   
-  return app_tables.articles.client_writable().add_row(id=last_id, category='Category', title=f'Article {last_id}', created=datetime.now(),
-                                body="""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate massa vitae diam rhoncus, non dictum ante efficitur. Vivamus varius mattis dignissim. Praesent sed metus dui. Vestibulum et augue varius, efficitur est pulvinar, suscipit quam. Vestibulum id magna enim. Etiam interdum arcu viverra malesuada lobortis. Sed porttitor a enim vel congue. Ut vestibulum id risus ac posuere. Nam in lacinia ligula. Sed commodo justo id elit venenatis pretium. Phasellus dictum nunc vel arcu feugiat pellentesque. Aenean vitae turpis placerat, imperdiet lectus at, efficitur erat."""
-                               )
-
-#Contact
-@anvil.server.callable
-def add_row(user, category, subject, message):
-
-  app_tables.contacts.add_row(id = app_tables.contacts.search(tables.order_by('id', ascending=False))[0]['id'] + 1 ,
-                              email = user,
-                              created = datetime.now(),
-                              month_order = datetime.now().month,
-                              month = datetime.now().strftime('%B'),
-                              year = datetime.now().year,
-                              category = category,
-                              subject= subject,
-                              message = message,
-                              status = False
-                             )
-
-@anvil.server.callable
-def delete_row(row):
-  # check that the row being deleted exists in the Data Table
-  if app_tables.contacts.has_row(row):
-    row.delete()
-  else:
-    raise Exception("Article does not exist")
-    
-@anvil.server.callable
-def update_row(row, value):
-  # check that the row being deleted exists in the Data Table
-  if app_tables.contacts.has_row(row):
-    row.update(status = value)
-  else:
-    raise Exception("Article does not exist")
-
-# Main / Contact
-# Get user from data table
-@anvil.server.callable
-def get_user():
-  return app_tables.users.get(email = anvil.google.auth.get_user_email())
-
-# Get labels from data table
-@anvil.server.callable
-def get_label(label):
-  return list(set([str(row[label]) for row in app_tables.labels.search()]))[:-1]
-  
-# Get dates from data table
-@anvil.server.callable
-def get_date(format, order):
-  return list(set([row['created'].strftime(format) for row in app_tables.contacts.search(
-    tables.order_by(order,ascending = False))]))
+  return app_tables.news.client_writable().add_row(
+    id=last_id,
+    genre='genre',
+    title=f'Article {last_id}', created=datetime.now(),
+    body="""#Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate massa vitae diam rhoncus, non dictum ante efficitur. Vivamus varius mattis dignissim. Praesent sed metus dui. Vestibulum et augue varius, efficitur est pulvinar, suscipit quam. Vestibulum id magna enim. Etiam interdum arcu viverra malesuada lobortis. Sed porttitor a enim vel congue. Ut vestibulum id risus ac posuere. Nam in lacinia ligula. Sed commodo justo id elit venenatis pretium. Phasellus dictum nunc vel arcu feugiat pellentesque. Aenean vitae turpis placerat, imperdiet lectus at, efficitur erat."""
+  )

@@ -1,0 +1,276 @@
+components:
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: false,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: all_card
+  layout_properties:
+    col_widths: {}
+    grid_position: IJNZOO,SFUAXJ
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: Total, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: all_label
+    layout_properties: {grid_position: 'RQXEUO,TLTXZU'}
+  - type: Label
+    properties: {role: display-4, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '0', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: all
+    layout_properties:
+      col_widths: {}
+      grid_position: FOTBIS,VDAHWQ
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: email_card
+  layout_properties:
+    col_widths: {}
+    grid_position: AEUXUS,DYQQHR
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: ' Répartition des catégories', font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:balance-scale'}
+    name: email_label
+    layout_properties: {grid_position: 'NXACWW,BLVDNB'}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: email_card_copy
+  layout_properties:
+    col_widths: {}
+    grid_position: AEUXUS,WVOCJI
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: Boîte de réception, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:inbox'}
+    name: email_label_copy
+    layout_properties: {grid_position: 'XBZFCU,HVUMAJ'}
+- type: Plot
+  properties: {}
+  name: plot_pie
+  layout_properties: {grid_position: 'YKHRKU,GELWAP'}
+  data_bindings:
+  - {property: tag, code: 'self.item[''status'']'}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: unread_card
+  layout_properties:
+    col_widths: {}
+    grid_position: YKHRKU,UZKVWV XAAZWZ,VEUJNV
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: Non lu, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: unread_label
+    layout_properties: {grid_position: 'TKTCQR,BKLYUF'}
+  - type: Label
+    properties: {role: display-4, align: center, tooltip: '', border: '', foreground: '',
+      visible: false, text: '0', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: unreaded
+    layout_properties: {grid_position: 'HLPLLU,NNNTLI'}
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '0', font_size: 100, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: unreaded_link
+    layout_properties: {grid_position: 'VULHGV,KZBZJX'}
+    event_bindings: {click: form_show}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: readed_card
+  layout_properties:
+    col_widths: {}
+    grid_position: YKHRKU,UZKVWV BMNNVQ,NRCLWN
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: Lu, font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: readed_label
+    layout_properties: {grid_position: 'DJJZAC,RYBXCM'}
+  - type: Label
+    properties: {role: display-4, align: center, tooltip: '', border: '', foreground: '',
+      visible: false, text: '0', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: readed
+    layout_properties:
+      col_widths: {}
+      grid_position: CSMHZF,RLCGOZ
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '0', font_size: 100, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: readed_link
+    layout_properties:
+      col_widths: {}
+      grid_position: TSPNJE,ZOCTBZ
+    event_bindings: {click: readed_link_click}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: Mois
+    border: ''
+    enabled: true
+    foreground: ''
+    items: []
+    visible: false
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: true
+  name: month_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: GNEHGQ,KCJPPX
+    full_width_row: false
+  event_bindings: {change: form_show}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: ''
+    border: ''
+    enabled: true
+    foreground: ''
+    items: ['']
+    visible: false
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: status_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: XCOIIX,UDYCRT
+    full_width_row: false
+  event_bindings: {change: form_show}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: Année
+    border: ''
+    enabled: true
+    foreground: ''
+    items: []
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: true
+  name: year_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: FYOAFM,XKTUWY
+    full_width_row: false
+  event_bindings: {change: form_show}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: Catégorie
+    border: ''
+    enabled: true
+    foreground: ''
+    items: []
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: true
+  name: category_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: FYOAFM,WIQULK
+    full_width_row: false
+  event_bindings: {change: form_show}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: ''
+    border: ''
+    enabled: true
+    foreground: ''
+    items: ['']
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: tri_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: FYOAFM,OOGAMC
+    full_width_row: false
+- type: RepeatingPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', items: null, visible: true,
+    spacing_above: small, spacing_below: small, item_template: Administration.Inbox.InboxPanel,
+    background: ''}
+  name: emails_panel
+  layout_properties: {grid_position: 'HSJQFV,NAIPRA'}
+  event_bindings: {show: form_show}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"XKTUWY":15,"WIQULK":15,"OOGAMC":15}'}
+  event_bindings: {show: form_show}
+is_package: true

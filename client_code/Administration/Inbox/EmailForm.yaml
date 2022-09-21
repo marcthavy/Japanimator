@@ -1,0 +1,182 @@
+components:
+- type: Label
+  properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Expéditeur, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: email_title
+  layout_properties:
+    col_widths: {}
+    grid_position: ENDNRV,YFOJHM
+  data_bindings: []
+- type: CheckBox
+  properties: {role: null, align: right, tooltip: '', border: '', enabled: true, foreground: '',
+    allow_indeterminate: false, visible: true, text: Marquer comme lu, font_size: null,
+    font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
+    bold: false, checked: false, underline: false}
+  name: status_checkbox
+  layout_properties: {grid_position: 'ENDNRV,HSSDZA'}
+  data_bindings:
+  - {property: checked, code: 'self.item[''status'']', writeback: false}
+  event_bindings: {change: update}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: 'theme:Primary 500'}
+  name: header_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: MXNPNY,TFRNYC
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Titre, font_size: null, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:at'}
+    name: email_label
+    layout_properties:
+      col_widths: {}
+      grid_position: XVOBJA,QMPYLH
+      full_width_row: false
+    data_bindings:
+    - {property: text, code: 'self.item[''email'']'}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Date de réception, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: created_title
+  layout_properties:
+    col_widths: {}
+    grid_position: XDFRMM,GXMNRW LBXBOL,KVSLJT
+  data_bindings: []
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+    placeholder: '', border: '', enabled: false, foreground: '', visible: true, font_size: null,
+    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+    min_date: '', background: '', bold: false, underline: false, format: '\R\e\ç\u
+      \l\e DD/MM/YYYY \à HH:mm:ss'}
+  name: created_datepicker
+  layout_properties: {grid_position: 'XDFRMM,GXMNRW OEMELI,TDECKD'}
+  data_bindings:
+  - {property: date, code: 'self.item[''created'']', writeback: false}
+  event_bindings: {}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Sujet, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: topic_title
+  layout_properties:
+    col_widths: {}
+    grid_position: XDFRMM,GXMNRW BPZAQI,QLZUPE
+  data_bindings: []
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Categorie, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: category_title
+  layout_properties:
+    col_widths: {}
+    grid_position: XDFRMM,CJMVUU EWMOSB,CDMCZX
+  data_bindings: []
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: ''
+    border: ''
+    enabled: false
+    foreground: ''
+    items: []
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: category_dropdown
+  layout_properties: {grid_position: 'XDFRMM,CJMVUU CWZVJC,AMUPUL'}
+  data_bindings: []
+- type: TextArea
+  properties: {role: dense, align: left, height: '', tooltip: '', placeholder: Sujet,
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: 'theme:White', bold: false, underline: false}
+  name: topic_textarea
+  layout_properties: {grid_position: 'XCYMVJ,MGPXNO'}
+  data_bindings:
+  - {property: text, code: 'self.item[''topic'']', writeback: false}
+  event_bindings: {}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Message, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: message_title
+  layout_properties:
+    col_widths: {}
+    grid_position: TSKJEC,JXSQRX
+  data_bindings: []
+- type: TextArea
+  properties: {role: dense, align: left, height: 237, tooltip: '', placeholder: Message,
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: 'theme:White', bold: false, underline: false}
+  name: message_textarea
+  layout_properties:
+    col_widths: {}
+    grid_position: XZIKGH,XQBGOS
+  data_bindings:
+  - {property: text, code: 'self.item[''message'']', writeback: false}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Modifier, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: 'theme:Secondary
+      500', bold: false, underline: false, icon: 'fa:pencil'}
+  name: edit_button
+  layout_properties:
+    col_widths: {}
+    grid_position: IESMOG,PRTLIF
+  event_bindings: {click: edit_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Effacer le mail, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: 'theme:Error',
+    bold: false, underline: false, icon: 'fa:trash'}
+  name: trash_button
+  layout_properties:
+    col_widths: {}
+    grid_position: IESMOG,OPZFJG
+  event_bindings: {click: trash_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: Enregistrer, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: 'fa:floppy-o'}
+  name: save_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNGWRY,QHQMUU
+  event_bindings: {click: save_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: annuler, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:undo'}
+  name: cancel_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNGWRY,HBLKVX
+  event_bindings: {click: cancel_button_click}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"YFOJHM":45,"HSSDZA":15}'}
+  event_bindings: {show: form_show}

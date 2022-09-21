@@ -2,18 +2,18 @@ roles:
 - name: text
   components: [Label, Link]
 - name: subheading
-  components: [Label]
+  components: [Label, Link]
 - name: input-prompt
   components: [Label]
 - name: headline
-  components: [Label]
+  components: [Label, Link]
   displayInToolbox: true
   title: Headline
   display_in_toolbox: true
 - name: display-4
-  components: [Label]
+  components: [Label, Link]
 - name: card
-  components: [ColumnPanel, LinearPanel, XYPanel, RepeatingPanel]
+  components: [ColumnPanel, LinearPanel, XYPanel, RepeatingPanel, Link]
   displayInToolbox: true
   title: Card
   display_in_toolbox: true
@@ -26,9 +26,15 @@ roles:
 - name: secondary-color
   components: [Button, FileLoader]
 - name: dense
-  components: [TextBox]
+  components: [TextBox, TextArea]
 - name: selected
   components: [Link]
+- name: horizontal-repeater
+  components: [RepeatingPanel]
+  display_in_toolbox: false
+- {name: separator, components: null}
+- {name: overflow-hidden}
+- {name: test}
 color_scheme:
   preset_groups:
   - name: Primary Colour
@@ -164,8 +170,8 @@ color_scheme:
       - {name: Secondary 500, color: '#9E9E9E'}
       - {name: Secondary 700, color: '#616161'}
   colors:
-  - {name: Primary 500, color: '#2196F3'}
-  - {name: Primary 700, color: '#1976D2'}
+  - {name: Primary 500, color: '#3F51B5'}
+  - {name: Primary 700, color: '#303F9F'}
   - {name: Secondary 500, color: '#FF9800'}
   - {name: Secondary 700, color: '#F57C00'}
   - {name: White, color: '#FFFFFF'}
@@ -177,3 +183,5 @@ color_scheme:
   - {name: Gray 800, color: '#424242'}
   - {name: Gray 900, color: '#212121'}
   - {name: Black, color: '#000000'}
+  - {name: Error, color: '#a12424'}
+  - {name: Valid, color: Green}

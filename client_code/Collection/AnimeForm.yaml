@@ -1,0 +1,897 @@
+components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: large,
+    background: 'theme:Secondary 500'}
+  name: header_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: HONSOU,KNHVOW
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Titre, font_size: null, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: 'theme:Secondary
+        500', bold: false, underline: false, icon: ''}
+    name: title_label
+    layout_properties:
+      col_widths: {}
+      grid_position: XVOBJA,QMPYLH
+      full_width_row: false
+    data_bindings:
+    - {property: text, code: 'self.item[''title'']'}
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Saisir le titre du nouvel anime,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: large, type: text, spacing_below: large, italic: false,
+      background: '', bold: false, underline: false}
+    name: title_textbox
+    layout_properties: {grid_position: 'ITZINF,HENRPP', full_width_row: false}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''title'']', writeback: false}
+- type: Image
+  properties: {role: null, vertical_align: center, height: 439, tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
+    source: '', spacing_below: small, background: '', horizontal_align: center}
+  name: poster_image
+  layout_properties:
+    col_widths: {}
+    grid_position: MRQJEC,ERRFCF OUZHRQ,BZGGDK
+  data_bindings:
+  - {property: source, code: 'self.item[''main_picture_large'']'}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: false,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: edit_urls_panel
+  layout_properties: {grid_position: 'MRQJEC,ERRFCF QUSVYL,ZHAPHR'}
+  components:
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Mettre une image large (url),
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: url, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: main_picture_large_textbox
+    layout_properties: {grid_position: 'BVZCND,SIOJBB'}
+    data_bindings:
+    - {property: text, code: 'self.item[''main_picture_large'']', writeback: false}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Mettre une image moyenne(url),
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: url, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: main_picture_medium_textbox
+    layout_properties:
+      col_widths: {}
+      grid_position: UPYMQT,SWSEWA
+    data_bindings:
+    - {property: text, code: 'self.item[''main_picture_medium'']', writeback: false}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: information_card
+  layout_properties: {grid_position: 'MRQJEC,ERRFCF TBZPSC,ZEVPCB'}
+  components:
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Informations, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: informations_title
+    layout_properties:
+      col_widths: {}
+      grid_position: WKLSZE,NVNNLY
+    data_bindings: []
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: informations_panel
+    layout_properties: {grid_position: 'QBSZBQ,SDLLSB'}
+    components:
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Media :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: media_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA IDGUCP,HQEOPG
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Episode(s) :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: num_episodes_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA KEXWCX,TWVASP
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Durée :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: duration_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA AEWUWX,KFWUWU
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Statut :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: status_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA DTGCSU,NTCLWI
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Source :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: source_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA VNRPEN,HXFLQH
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Saison :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: season_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA XWYZCN,LVDJRX
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Diffusion :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: broadcast_dates_title
+      layout_properties: {grid_position: 'ZFZGRO,YSYGKA AGDUFZ,DPADPP'}
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Sortie :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: release_weekday_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA UIDRYQ,JGORCX
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Pegi :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: rating_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA OVPFOR,HXHSFY
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: media_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN GLUAAW,ZQWHVP
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: num_episodes_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN UNHJAA,DRUAPY
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: duration_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN YIDBCZ,YESPED
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: status_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN MOWRIE,WIJQFR
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: source_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN AKAATD,VVYFEN
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: season_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN RKESYL,DRHWGM
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: broadcast_dates_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN HGEAXD,RIUEGL
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: release_weekday_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN JZIDQK,XUPRDO
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: rating_label
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,AVADRN EDVQZF,MVZDNE
+      data_bindings: []
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: false,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: edit_informations_panel
+    layout_properties:
+      col_widths: {}
+      grid_position: WSKESB,MFWWSX
+    components:
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Media :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: edit_media_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA IDGUCP,HQEOPG
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Episode(s) :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: edit_num_episodes_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA KEXWCX,TWVASP
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Durée :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: edit_duration_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA AEWUWX,KFWUWU
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Statut :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: edit_status_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA DTGCSU,NTCLWI
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Source :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: edit_source_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA VNRPEN,HXFLQH
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Saison :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: edit_season_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA XWYZCN,LVDJRX
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Diffusion :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: edit_broadcast_dates_title
+      layout_properties: {grid_position: 'ZFZGRO,YSYGKA AGDUFZ,DPADPP'}
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Sortie :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: edit_release_weekday_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA UIDRYQ,JGORCX
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Pegi :
+
+          ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: edit_rating_title
+      layout_properties:
+        col_widths: {}
+        grid_position: ZFZGRO,YSYGKA OVPFOR,HXHSFY
+      data_bindings: []
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Not Safe For Work :', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: nsfw_title
+      layout_properties: {grid_position: 'ZFZGRO,YSYGKA PEWSHL,KERXPI'}
+    - type: DropDown
+      properties: {}
+      name: media_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN NWTHXU,DIFHZX'}
+      data_bindings: []
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Nombre,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: num_episodes_textbox
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN GLUAAW,LTKXCD'}
+      data_bindings:
+      - {property: text, code: 'self.item[''num_episodes'']', writeback: true}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '0
+          days 00:00:00', border: '', enabled: true, foreground: '', visible: true,
+        text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false}
+      name: duration_textbox
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN DQHVJR,DOHFJA'}
+      data_bindings:
+      - {property: text, code: 'self.item[''average_episode_duration'']', writeback: false}
+    - type: DropDown
+      properties: {}
+      name: status_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN JTXHYB,BQKADC'}
+      data_bindings: []
+    - type: DropDown
+      properties: {}
+      name: source_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN QZLETB,YKCYYU'}
+      data_bindings: []
+    - type: DropDown
+      properties: {}
+      name: season_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN ZHLCDO,JRKHDE'}
+      data_bindings: []
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Année,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: season_year_textbox
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN ZHLCDO,GDYRFG'}
+      data_bindings:
+      - {property: text, code: 'self.item[''start_season_year'']', writeback: false}
+    - type: DatePicker
+      properties: {}
+      name: start_datepicker
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN DJSLUO,GPQQFW'}
+      data_bindings:
+      - {property: date, code: 'self.item[''start_date'']', writeback: false}
+    - type: DatePicker
+      properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+        placeholder: '', border: '', enabled: true, foreground: '', visible: true,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
+      name: end_datepicker
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN DJSLUO,QDBEOM'}
+      data_bindings:
+      - {property: date, code: 'self.item[''end_date'']', writeback: false}
+    - type: DropDown
+      properties: {}
+      name: weekdays_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN JABAUK,LEAGJZ'}
+      data_bindings: []
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '00:00:00',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: release_hour_textbox
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN JABAUK,PVUNNX'}
+      data_bindings:
+      - {property: text, code: 'self.item[''broadcast_start_time'']', writeback: false}
+    - type: DropDown
+      properties: {}
+      name: rating_dropdown
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN SMYXAF,HLJGGS'}
+      data_bindings: []
+    - type: CheckBox
+      properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+        foreground: '', allow_indeterminate: false, visible: true, text: Not safe,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, checked: false, underline: false}
+      name: nsfw_checkbox
+      layout_properties: {grid_position: 'ZFZGRO,AVADRN ONCEZX,HCLLSB'}
+      data_bindings:
+      - {property: checked, code: 'self.item[''nsfw'']', writeback: false}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: score_card
+  layout_properties: {grid_position: 'MRQJEC,EXCDAU WPAWNU,OKPAYU'}
+  components:
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Score, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: mean_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,VAADGN BRNGMU,ATNUDM
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:star'}
+    name: mean_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,VAADGN NVYXWB,CNQJSR
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: mean_textbox
+    layout_properties: {grid_position: 'RWSSAI,VAADGN SXPYYR,QSMCRG'}
+    data_bindings:
+    - {property: text, code: 'self.item[''mean'']', writeback: false}
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Vote(s), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: num_scoring_users_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,VAADGN AUSXOI,VYQITZ
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:tachometer'}
+    name: num_scoring_users_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,VAADGN MRRJHY,TWPCOP
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: num_scoring_users_textbox
+    layout_properties: {grid_position: 'RWSSAI,VAADGN EEQVAM,TYRXBJ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''num_scoring_users'']', writeback: false}
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Rang, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: rank_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,XFAZSB PLCNOI,MMNTKB
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:line-chart'}
+    name: rank_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,XFAZSB EEALRB,DQABVY
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: rank_textbox
+    layout_properties: {grid_position: 'RWSSAI,XFAZSB KJYAHZ,JVBUNU'}
+    data_bindings:
+    - {property: text, code: 'self.item[''rank'']', writeback: false}
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Membre(s), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: num_list_users_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,XFAZSB AGKKFK,OCRUSW
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:user'}
+    name: num_list_users_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,XFAZSB YOKAEU,SIHGDT
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: num_list_users_textbox
+    layout_properties: {grid_position: 'RWSSAI,XFAZSB WIULLF,HOHOUK'}
+    data_bindings:
+    - {property: text, code: 'self.item[''num_list_users'']', writeback: false}
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Popularité, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: popularity_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,TTMOAA CJFTWG,UPSLSX
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:slack'}
+    name: popularity_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,TTMOAA KHAZLQ,PWNDKN
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: popularity_textbox
+    layout_properties: {grid_position: 'RWSSAI,TTMOAA OGXFLL,NMEBUW'}
+    data_bindings:
+    - {property: text, code: 'self.item[''popularity'']', writeback: false}
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Favoris, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: num_favorites_title
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,TTMOAA USUSCS,QZVNKU
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: 'fa:thumbs-o-up'}
+    name: num_favorites_label
+    layout_properties:
+      col_widths: {}
+      grid_position: RWSSAI,TTMOAA VDHQEJ,ANZEJQ
+    data_bindings: []
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nombre,
+      border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: num_favorites_textbox
+    layout_properties: {grid_position: 'RWSSAI,TTMOAA VZYXSQ,HNMTDG'}
+    data_bindings:
+    - {property: text, code: 'self.item[''num_favorites'']', writeback: false}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: 'Synopsis :', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+    underline: false, icon: ''}
+  name: synopsis_title
+  layout_properties:
+    col_widths: {}
+    grid_position: MRQJEC,EXCDAU ZRLEVU,BABTWF
+- type: TextArea
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: Résumer le synopsis du nouvel anime,
+    border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: synopsis_textarea
+  layout_properties: {grid_position: 'MRQJEC,EXCDAU ZHYNHO,ZRZOCL'}
+  data_bindings:
+  - {property: text, code: 'self.item[''synopsis'']', writeback: false}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: synopsis_label
+  layout_properties:
+    col_widths: {}
+    grid_position: MRQJEC,EXCDAU GYQBHM,BBTVQI
+  data_bindings:
+  - {property: text, code: 'self.item[''synopsis'']'}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: genre_card
+  layout_properties: {grid_position: 'MRQJEC,EXCDAU ICFXKT,LHMHQS'}
+  components:
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Genre(s), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: genres_title
+    layout_properties:
+      col_widths: {}
+      grid_position: ZIZOAQ,JPHQQL
+    data_bindings: []
+  - type: RepeatingPanel
+    properties: {item_template: Collection.AnimeTagPanel}
+    name: genre_panel
+    layout_properties: {grid_position: 'JPYXCS,WWGXGJ'}
+  - type: TextArea
+    properties: {role: null, align: left, height: '', tooltip: '', placeholder: 'genre1,
+        genre2, ...etc', border: '', enabled: true, foreground: '', visible: false,
+      text: '', font_size: null, auto_expand: false, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false}
+    name: genres_textarea
+    layout_properties: {grid_position: 'HDOIRB,CFGVII'}
+    data_bindings: []
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: studio_card
+  layout_properties: {grid_position: 'MRQJEC,EXCDAU ICFXKT,GGENBF'}
+  components:
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Studio(s), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: 'theme:Primary
+        500', bold: false, underline: false, icon: ''}
+    name: studios_title
+    layout_properties:
+      col_widths: {}
+      grid_position: TLGXUI,ZIZJMY
+    data_bindings: []
+  - type: RepeatingPanel
+    properties: {item_template: Collection.AnimeTagPanel}
+    name: studio_panel
+    layout_properties:
+      col_widths: {}
+      grid_position: DTOLVI,RXIWAK
+  - type: TextArea
+    properties: {role: null, align: left, height: '', tooltip: '', placeholder: 'studio1,
+        studio2, ...etc', border: '', enabled: true, foreground: '', visible: false,
+      text: '', font_size: null, auto_expand: false, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false}
+    name: studios_textarea
+    layout_properties: {grid_position: 'AFNOGE,UKMAQD'}
+    data_bindings: []
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: alternative_titles_card
+  layout_properties:
+    col_widths: {}
+    grid_position: MRQJEC,EXCDAU FRJKAL,KGWZYB
+  components:
+  - type: Label
+    properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Titre(s) alternatif, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: 'theme:Primary 500', bold: false, underline: false, icon: ''}
+    name: alternative_titles
+    layout_properties:
+      col_widths: {}
+      grid_position: ZIZOAQ,JPHQQL
+    data_bindings: []
+  - type: RepeatingPanel
+    properties: {item_template: Collection.AnimeTagPanel}
+    name: alternative_titles_panel
+    layout_properties: {grid_position: 'JPYXCS,WWGXGJ'}
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: false,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"LVPZWI":20,"REGWFA":40}',
+      spacing_below: small, background: ''}
+    name: edit_alternative_titles_panel
+    layout_properties: {grid_position: 'WRHSJD,PMYEYC'}
+    components:
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Titre en anglais, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: alternative_titles_en_label
+      layout_properties: {grid_position: 'HLTARL,LVPZWI TUUSFU,XQOIMN'}
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Titre en japonais, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: alternative_titles_jp_label
+      layout_properties: {grid_position: 'HLTARL,LVPZWI QCTLQG,OKTGAE'}
+    - type: Label
+      properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Titre synonyme, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: alternative_titles_synonyms_title
+      layout_properties: {grid_position: 'HLTARL,LVPZWI PGCQNL,DCEZFM'}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Saisir le titre du nouvel animé en anglais,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: alternative_titles_en_textbox
+      layout_properties: {grid_position: 'HLTARL,REGWFA THHFVI,HPGVFM'}
+      data_bindings:
+      - {property: text, code: 'self.item[''alternative_titles_en'']', writeback: false}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Saisir le titre du nouvel animé en japonais,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: alternative_titles_jp_textbox
+      layout_properties: {grid_position: 'HLTARL,REGWFA YUVMXY,CQQVDV'}
+      data_bindings:
+      - {property: text, code: 'self.item[''alternative_titles_ja'']', writeback: false}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: 'titre1,
+          titre2, ...etc', border: '', enabled: true, foreground: '', visible: true,
+        text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false}
+      name: alternative_titles_synonyms_textbox
+      layout_properties: {grid_position: 'HLTARL,REGWFA TVTIYV,XEEGQN'}
+      data_bindings: []
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Modifier, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: 'theme:Secondary
+      500', bold: false, underline: false, icon: 'fa:pencil'}
+  name: edit_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNDGQR,QFHRMW KAXMAS,QIFLKY
+  event_bindings: {click: edit_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: Enregistrer, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: 'fa:floppy-o'}
+  name: save_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNDGQR,QFHRMW AJLBVY,PVEEMJ
+  event_bindings: {click: save_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Effacer anime, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: 'theme:Error',
+    bold: false, underline: false, icon: 'fa:trash'}
+  name: trash_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNDGQR,EHSWZV NHGNFK,ATXJEF
+  event_bindings: {click: trash_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: annuler, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:undo'}
+  name: cancel_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DNDGQR,EHSWZV RLZAQA,NICAXZ
+  event_bindings: {click: cancel_button_click}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: ajouter anime, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: 'fa:floppy-o'}
+  name: add_button
+  layout_properties:
+    col_widths: {}
+    grid_position: VWOBRL,HBMTXP
+  event_bindings: {click: add_button_click}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: false, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: created_label
+  layout_properties: {grid_position: 'GXJZHJ,TFBXDB'}
+  data_bindings:
+  - {property: text, code: 'self.item[''created_at'']'}
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: false, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: updated_at
+  layout_properties: {grid_position: 'PASBCA,FDRLPV'}
+  data_bindings:
+  - {property: text, code: 'self.item[''updated_at'']'}
+- type: Label
+  properties: {role: subheading, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+      50', visible: true, text: Recommandation(s), font_size: null, font: '', spacing_above: large,
+    icon_align: left, spacing_below: large, italic: false, background: 'theme:Secondary
+      500', bold: false, underline: false, icon: ''}
+  name: recommandation_title
+  layout_properties:
+    col_widths: {}
+    grid_position: MDIFYM,APQSTQ
+  data_bindings: []
+- type: RepeatingPanel
+  properties: {role: horizontal-repeater, tooltip: '', border: '', foreground: '',
+    items: null, visible: true, spacing_above: small, spacing_below: small, item_template: Home.SliderPanel,
+    background: ''}
+  name: recommandation_panel
+  layout_properties: {grid_position: 'DPJHXO,OARUJB'}
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"ERRFCF":20,"EXCDAU":40,"GGENBF":30}',
+    spacing_below: small, background: ''}
+  event_bindings: {show: form_show}

@@ -1,0 +1,24 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {show: form_show}
+components:
+- type: Button
+  properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: false, text: Ajouter un article, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: 'fa:plus'}
+  name: new_article_button
+  layout_properties:
+    col_widths: {}
+    grid_position: DYWGOP,MLYEBL
+  event_bindings: {click: new_article_button_click}
+- type: RepeatingPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', items: null, visible: true,
+    spacing_above: small, spacing_below: small, item_template: News.ArticlePanel,
+    background: ''}
+  name: news_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: MTBJCM,KNLBKE
+is_package: true

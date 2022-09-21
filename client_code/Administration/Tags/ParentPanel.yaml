@@ -1,0 +1,24 @@
+components:
+- type: Label
+  properties: {role: null, align: left, border: '', foreground: '', visible: true,
+    text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '#ccc', bold: false, underline: false, icon: ''}
+  name: parent_label
+  layout_properties:
+    col_widths: {}
+    grid_position: UQZGMO,LHGIPJ
+  data_bindings: []
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'PGKWMJ,HPNNQX'}
+- type: RepeatingPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', items: null, visible: true,
+    spacing_above: small, spacing_below: small, item_template: Administration.Tags.TagPanel,
+    background: ''}
+  name: tag_panel
+  layout_properties: {grid_position: 'PGKWMJ,TOJUHW'}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"HPNNQX":10,"TOJUHW":50}'}
+  event_bindings: {}

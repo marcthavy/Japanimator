@@ -1,80 +1,101 @@
 is_package: true
 container:
   type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:standard-page.html'}
+  event_bindings: {show: form_show}
 components:
-- type: ColumnPanel
-  properties: {}
-  name: content_panel
-  layout_properties: {slot: default}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
   components:
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: User, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:user'}
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: true, text: Utilisateur, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:user'}
     name: user_link
-    layout_properties: {}
+    layout_properties: {expand: false, width: null}
     event_bindings: {click: nav_link_click}
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Disconnect, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: true, text: Deconnexion, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: 'fa:power-off'}
+      icon: 'fa:sign-out'}
     name: logout_link
     layout_properties: {}
     event_bindings: {click: logout_link_click}
 - type: ColumnPanel
   properties: {col_widths: '{}'}
-  name: column_panel_1
+  name: nav_panel
   layout_properties: {slot: left-nav}
   components:
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Admin, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:unlock'}
-    name: admin_link
-    layout_properties: {grid_position: 'CBUNGA,TFSUAC'}
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: false, text: TAGS, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:tags'}
+    name: tag_link
+    layout_properties: {grid_position: 'ACDIEH,VCGWVF'}
+    event_bindings: {click: nav_link_click}
+  - type: Link
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: false, text: UTILISATEURS, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:users'}
+    name: users_link
+    layout_properties: {grid_position: 'CBUNGA,DIFUUE'}
     components: []
     event_bindings: {click: nav_link_click}
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Library, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:list'}
-    name: library_link
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: false, text: BOÎTE DE RECEPTION, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:inbox'}
+    name: inbox_link
+    layout_properties: {grid_position: 'TAPUAK,VEFNDX'}
+    components: []
+    event_bindings: {click: nav_link_click}
+  - type: Link
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: true, text: ACTUALITE, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:book'}
+    name: news_link
+    layout_properties: {grid_position: 'ELVUCK,JGLOTY'}
+    event_bindings: {click: nav_link_click}
+    components: []
+  - type: Link
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: true, text: CATALOGUE, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:film'}
+    name: collection_link
     layout_properties: {grid_position: 'XXUMJF,NLDRGT'}
     components: []
     event_bindings: {click: nav_link_click}
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Contact, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:envelope-o'}
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: true, text: CONTACT, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: 'fa:envelope-o'}
     name: contact_link
     layout_properties: {grid_position: 'KPFKJP,HRXNEJ'}
     components: []
     event_bindings: {click: nav_link_click}
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: false, text: Articles, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: 'fa:book'}
-    name: articles_link
-    layout_properties: {grid_position: 'DWYDJC,TWFYJZ'}
-    event_bindings: {click: nav_link_click}
-    components: []
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: false, text: Blog Posts, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+    properties: {role: subheading, url: '', align: left, tooltip: '', border: '',
+      foreground: '', visible: false, text: BLOG POSTS, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: 'fa:pencil'}
     name: blog_posts_link
@@ -82,18 +103,136 @@ components:
     event_bindings: {click: nav_link_click}
     components: []
   - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: refresh, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:refresh'}
-    name: refresh
+    properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: 'Recharger
+
+        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:refresh'}
+    name: refresh_button
     layout_properties: {grid_position: 'JCZXYC,KSGMHS'}
     event_bindings: {click: refresh_click}
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-    visible: true, text: Japanimator, font_size: null, wrap_on: mobile, font: '',
+    visible: true, text: JAPANIMATOR, font_size: null, wrap_on: mobile, font: '',
     col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
   name: home_link
   layout_properties: {grid_position: 'XFAQIJ,ABMJWM', slot: title}
   event_bindings: {click: nav_link_click}
+- type: ColumnPanel
+  properties: {role: overflow-hidden, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: ''}
+  name: main_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Image
+    properties: {role: null, vertical_align: bottom, height: '600', tooltip: '', border: '',
+      foreground: '', visible: false, display_mode: zoom_to_fill, spacing_above: none,
+      source: 'https://preview.redd.it/05ra7y36iry51.jpg?width=5120&format=pjpg&auto=webp&s=204b797e833cca25b1da7ebef63b01201d08e004',
+      spacing_below: none, background: '', horizontal_align: center}
+    name: banner_image
+    layout_properties:
+      col_widths: {}
+      grid_position: UBMNGC,KUDLXY
+      full_width_row: true
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: never, col_spacing: medium, spacing_above: none, col_widths: '{}',
+      spacing_below: none, background: ''}
+    name: content_panel
+    layout_properties: {slot: default, grid_position: 'ANAMEU,YMRPOH', full_width_row: true}
+    components: []
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{"IPFZTT":15,"AHSXUN":45,"RFCTKC":18,"FOYDPL":37,"GSLTDF":18}',
+      spacing_below: none, background: 'theme:Primary 500'}
+    name: footer_panel
+    layout_properties: {grid_position: 'QEZTYR,ZBERYP', full_width_row: true}
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_3
+      layout_properties: {grid_position: 'KPJBSC,YKGHBB'}
+    - type: Spacer
+      properties: {height: 55}
+      name: spacer_4
+      layout_properties: {grid_position: 'UGMRFF,IPFZTT'}
+    - type: Label
+      properties: {role: spaced-title, align: center, tooltip: '', border: '', foreground: 'theme:Secondary
+          500', visible: true, text: '#STAY CONNECTED', font_size: 18, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_8
+      layout_properties: {grid_position: 'UGMRFF,AHSXUN NZSVDO,RFCTKC'}
+    - type: FlowPanel
+      properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
+        foreground: '', visible: true, spacing_above: small, spacing_below: small,
+        background: ''}
+      name: flow_panel_1
+      layout_properties: {grid_position: 'UGMRFF,AHSXUN VIQBXT,GSLTDF'}
+      components:
+      - type: Link
+        properties: {role: null, url: 'https://www.instagram.com', align: right, tooltip: '',
+          border: '', foreground: white, visible: true, text: '', font_size: 18, wrap_on: mobile,
+          font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+          spacing_below: small, italic: false, background: '', bold: false, underline: false,
+          icon: 'fa:instagram'}
+        name: insta_link_2
+        layout_properties: {grid_position: 'OBLSRT,TLNZHB'}
+        components: []
+      - type: Link
+        properties: {role: null, url: 'https://twitter.com/anvil_works', align: center,
+          tooltip: '', border: '', foreground: white, visible: true, text: '', font_size: 18,
+          wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left,
+          col_widths: '{}', spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: 'fa:twitter'}
+        name: twitter_link_2
+        layout_properties: {grid_position: 'OBLSRT,NIXNHS'}
+        components: []
+      - type: Link
+        properties: {role: null, url: 'https://www.facebook.com', align: left, tooltip: '',
+          border: '', foreground: white, visible: true, text: '', font_size: 18, wrap_on: mobile,
+          font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+          spacing_below: small, italic: false, background: '', bold: false, underline: false,
+          icon: 'fa:facebook-official'}
+        name: link_2
+        layout_properties: {grid_position: 'OBLSRT,QEZRZQ'}
+    - type: Spacer
+      properties: {height: 23}
+      name: spacer_6
+      layout_properties: {grid_position: 'UGMRFF,AHSXUN XPYUKW,GBAUQJ'}
+    - type: Label
+      properties: {role: spaced-title, align: center, tooltip: '', border: '', foreground: white,
+        visible: true, text: NEWSLETTERS, font_size: null, font: '', spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_9
+      layout_properties: {grid_position: 'UGMRFF,AHSXUN APDOTD,CKMYMO'}
+    - type: FlowPanel
+      properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
+        foreground: '', visible: true, spacing_above: small, spacing_below: small,
+        background: ''}
+      name: flow_panel_2
+      layout_properties: {grid_position: 'UGMRFF,AHSXUN YDVRTJ,VMFNGH'}
+      components:
+      - type: TextBox
+        properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Saisir votre adresse mail,
+          border: solid 1 px white, enabled: true, foreground: 'theme:Primary 700',
+          visible: true, text: '', font_size: null, font: '', spacing_above: small,
+          type: text, spacing_below: small, italic: false, background: white, bold: false,
+          underline: false}
+        name: subscribe_textbox
+        layout_properties: {grid_position: 'UGMRFF,AHSXUN WLZBCS,CWCOEF WELRAU,DOOZEV'}
+      - type: Button
+        properties: {role: secondary-color, align: left, tooltip: '', border: '',
+          enabled: true, foreground: '', visible: true, text: Envoyer, font_size: null,
+          font: '', spacing_above: small, icon_align: left, spacing_below: small,
+          italic: false, background: '', bold: false, underline: false, icon: ''}
+        name: subscribe_button
+        layout_properties: {grid_position: 'UGMRFF,AHSXUN WLZBCS,CWCOEF WELRAU,NGNRMA'}
+        event_bindings: {}
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_5
+      layout_properties: {grid_position: 'DOXFAF,USBKNR'}

@@ -12,19 +12,57 @@ services:
   server_config: {user_table: users}
 - source: /runtime/services/google.yml
   client_config: {}
-  server_config: {}
+  server_config: {enc_delegation_refresh_token: xfKL8zI0v/Mb4PHOjJ1bSd876/VvHU4v5loiKwPniuOshE8BTb8nvhWEEK3RwYldFr/2L4dqiL7ltBSVYjuxl20lejVbcMPgxeLpYQqei54H4ExsgWS+HTiLb+SrDu3mLrmwfko+MmSI7hiCAO2NmFwBYmgyOp5lnzUua//ur3zkQbggtHoOxQyAch95sGrW4JhhI1ad2nxphu7auN6o8Xrrso++TBIcsi3iHQ7rhPjkPOTM4aI6Kfm3NU9jPxlSPMNoHEr2Fvu8O6xIhZWbI7rSZy3VBIPjk7ejj3gAeMab55hhicqVLpk9xlzMBw==}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {custom_smtp: false, test_mode: false}
 startup: {type: form, module: Login}
 package_name: Japanimator
-allow_embedding: false
+allow_embedding: true
 name: Japanimator
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
-startup_form: null
+startup_form: Contact
 native_deps: {head_html: ''}
 db_schema:
+  users:
+    title: users
+    client: search
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 100}
+      type: bool
+    - name: admin
+      admin_ui: {width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {width: 200}
+      type: datetime
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {width: 200}
+      type: string
+    - name: confirmed_email
+      admin_ui: {width: 200}
+      type: bool
+    - name: avatar
+      admin_ui: {width: 200}
+      type: media
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {width: 200}
+      type: number
   contacts:
     title: contacts
-    client: full
+    client: search
     server: full
     columns:
     - name: id
@@ -33,19 +71,13 @@ db_schema:
     - name: email
       admin_ui: {width: 200}
       type: string
-    - name: month_order
-      admin_ui: {width: 200}
-      type: number
-    - name: month
-      admin_ui: {width: 200}
-      type: string
     - name: year
       admin_ui: {width: 200}
       type: number
     - name: category
       admin_ui: {width: 200}
       type: string
-    - name: subject
+    - name: topic
       admin_ui: {width: 200}
       type: string
     - name: message
@@ -55,11 +87,57 @@ db_schema:
       admin_ui: {width: 200}
       type: bool
     - name: created
+      admin_ui: {width: 621}
+      type: datetime
+  tags:
+    title: tags
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+    - name: parent
+      admin_ui: {width: 200}
+      type: string
+    - name: description
+      admin_ui: {width: 357}
+      type: string
+    - name: color
+      admin_ui: {width: 200}
+      type: string
+  news:
+    title: news
+    client: full
+    server: full
+    columns:
+    - name: id
+      admin_ui: {width: 200}
+      type: number
+    - name: title
+      admin_ui: {width: 200}
+      type: string
+    - name: anime
+      admin_ui: {width: 200}
+      type: string
+    - name: body
+      admin_ui: {width: 200}
+      type: string
+    - name: genre
+      admin_ui: {width: 200}
+      type: string
+    - name: created
       admin_ui: {width: 200}
       type: datetime
+    - name: image
+      admin_ui: {width: 200}
+      type: media
+    - name: youtube
+      admin_ui: {width: 200}
+      type: string
   blog_posts:
     title: blog_posts
-    client: none
+    client: search
     server: full
     columns:
     - name: id_original
@@ -80,59 +158,28 @@ db_schema:
     - name: created
       admin_ui: {width: 200}
       type: datetime
-  articles:
-    title: articles
+    - name: image
+      admin_ui: {width: 200}
+      type: media
+  favorites:
+    title: favorites
     client: none
     server: full
     columns:
-    - name: id
+    - name: user
+      admin_ui: {width: 200}
+      type: string
+    - name: anime_id
       admin_ui: {width: 200}
       type: number
-    - name: title
-      admin_ui: {width: 200}
-      type: string
-    - name: body
-      admin_ui: {width: 200}
-      type: string
-    - name: category
-      admin_ui: {width: 200}
-      type: string
-    - name: created
-      admin_ui: {width: 200}
-      type: datetime
-  users:
-    title: users
-    client: full
-    server: full
-    columns:
-    - name: email
-      admin_ui: {width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {width: 100}
-      type: bool
-    - name: admin
+    - name: liked
       admin_ui: {width: 200}
       type: bool
-    - name: last_login
+    - name: added
       admin_ui: {width: 200}
-      type: datetime
-    - name: signed_up
+      type: bool
+    - name: note
       admin_ui: {width: 200}
-      type: datetime
-    - name: avatar
-      admin_ui: {width: 200}
-      type: media
-  labels:
-    title: labels
-    client: full
-    server: full
-    columns:
-    - name: topic
-      admin_ui: {width: 200}
-      type: string
-    - name: status
-      admin_ui: {width: 200}
-      type: string
+      type: number
 uplink_visible: true
 renamed: true

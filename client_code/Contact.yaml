@@ -1,0 +1,95 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"CDDBOA":20,"MMVMXN":40}'}
+  event_bindings: {show: form_show}
+components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: large,
+    background: 'theme:Primary 500'}
+  name: header_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: MWBRBT,HHGBYF
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Contactez-nous, font_size: null, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:envelope-o'}
+    name: contact_label
+    layout_properties:
+      col_widths: {}
+      grid_position: XVOBJA,QMPYLH
+      full_width_row: false
+- type: DropDown
+  properties:
+    role: form
+    align: full
+    tooltip: ''
+    placeholder: Catégorie
+    border: ''
+    enabled: true
+    foreground: ''
+    items: ['']
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: none
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: true
+  name: category_dropdown
+  layout_properties:
+    col_widths: {}
+    grid_position: OPABCF,CDDBOA AUFKFL,TXIBBP
+    full_width_row: false
+  event_bindings: {}
+- type: TextBox
+  properties: {role: dense, align: left, hide_text: false, tooltip: '', placeholder: Objet,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: topic_textbox
+  layout_properties:
+    col_widths: {}
+    grid_position: OPABCF,CDDBOA AVFCLC,OLGDSP
+    full_width_row: false
+  event_bindings: {change: topic_textbox_change}
+- type: TextArea
+  properties: {role: dense, align: left, height: '500', tooltip: '', placeholder: Message,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: 'theme:White', bold: false, underline: false}
+  name: message_textarea
+  layout_properties:
+    col_widths: {}
+    grid_position: OPABCF,CDDBOA YCVVOF,KEXTQH
+    full_width_row: false
+  event_bindings: {change: message_textarea_change}
+- type: Button
+  properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Envoyer le formulaire, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: large, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: send_button
+  layout_properties:
+    col_widths: {}
+    grid_position: OPABCF,CDDBOA NZZPUM,HSVHES
+    full_width_row: false
+  event_bindings: {click: send_button_click}
+- type: Image
+  properties: {role: null, vertical_align: center, height: '597', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: zoom_to_fill, spacing_above: none,
+    source: 'https://www.saar-hunsrueck-steig.de/cams/clients/shsteig/media/images_backgrounds_Bild_6.jpg',
+    spacing_below: large, background: '', horizontal_align: center}
+  name: side_image
+  layout_properties:
+    col_widths: {}
+    grid_position: OPABCF,MMVMXN
+    full_width_row: false
+is_package: false

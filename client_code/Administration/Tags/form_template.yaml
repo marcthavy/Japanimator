@@ -1,0 +1,66 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {show: form_show}
+components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: large,
+    background: 'theme:Primary 500'}
+  name: header_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: IJDNXW,INDOZQ
+    full_width_row: false
+  components:
+  - type: Label
+    properties: {role: headline, align: center, tooltip: '', border: '', foreground: 'theme:Gray
+        50', visible: true, text: Gestion des tags, font_size: null, font: '', spacing_above: large,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:tags'}
+    name: tags_label
+    layout_properties:
+      col_widths: {}
+      grid_position: XAIBZF,JJANGX
+      full_width_row: false
+- type: DataGrid
+  properties:
+    role: null
+    columns:
+    - {id: JOHMAO, title: Tag, data_key: column_1, expand: true, width: ''}
+    - {id: VKLILR, title: Nom, data_key: column_2, width: '', expand: true}
+    - {id: GUYYKV, title: Parent, data_key: column_3, expand: true, width: ''}
+    - {id: BVPBXI, title: Description, data_key: column_4, expand: true, width: ''}
+    - {id: SPUVOC, title: Couleur, data_key: column_5, expand: true}
+    - {id: BQENXE, title: '', data_key: column_6}
+    auto_header: true
+    tooltip: ''
+    border: ''
+    foreground: ''
+    rows_per_page: 10
+    visible: true
+    wrap_on: never
+    show_page_controls: true
+    spacing_above: small
+    spacing_below: small
+    background: ''
+  name: data_grid
+  layout_properties: {grid_position: 'UBNUYU,ANBBFA'}
+  components:
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Saisir un nouveau nom de tag,
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: none, type: text, spacing_below: large, italic: false,
+      background: '', bold: false, underline: false}
+    name: new_tag_textbox
+    layout_properties:
+      col_widths: {}
+      grid_position: KRYYNE,JATVNN
+    event_bindings: {pressed_enter: new_tag_textbox_pressed_enter}
+  - type: RepeatingPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: none, spacing_below: none, item_template: Administration.Tags.ParentPanel,
+      background: ''}
+    name: parent_panel
+    layout_properties: {}
+is_package: true
